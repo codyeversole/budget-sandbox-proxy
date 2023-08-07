@@ -1,0 +1,13 @@
+services:
+  proxy:
+    image: nginx:1.25.1-alpine3.17
+    networks:  
+      - nginx_network
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /datadrive/ssl:/etc/ssl
+    ports:
+      - "443:443"
+networks:
+  nginx_network:
+    external: true
